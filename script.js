@@ -35,4 +35,12 @@
     email: "danielaamet@team.com",
     img: "img/female3.png"
   }
+ form.addEventListener("submit", function (event) {
+event.preventDefault();
+const name = document.getElementById("name").value();
+const role = document.getElementById("role").value();
+const email = document.getElementById("email").value();
+const image = document.getElementById("image").value();
+    
+   
 ]

@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <title>Our team</title>
 </head>
 <body>
@@ -12,7 +13,7 @@
 
       <h1 class="team-title">Meet our Team</h1>
       <p class="team-subtitle">
-        Questo è il team di Boolean, compila il form in fondo alla pagina e diventa uno dei nostri!
+        Compila il form in fondo alla pagina e diventa un nuovo membro del team di Boolean!
       </p>
 
       <div class="team-grid">
@@ -88,16 +89,20 @@
         <h2>Aggiungi un nuovo membro</h2>
         <form id="team-form" class="team-form">
           <div class="form-group">
-          <label>Nome e cognome</label>  <input type="text" id="name">
+          <label for="name">Nome e cognome</label>
+          <input type="text" id="name" name="name" required>
           </div>
           <div class="form-group">
-            <label>Ruolo</label><input type="text" id="role">
+            <label for="role">Ruolo</label>
+            <input type="text" id="role" name="role" required>
           </div>
           <div class="form-group">
-           <label>Indirizzo mail</label> <input type="email" id="email">
+            <label for="email">Indirizzo mail</label>
+            <input type="email" id="email" name="email" required>
           </div>
           <div class="form-group">
-           <label>Url immagine</label> <input type="url" id="image">
+            <label for="image">URL immagine</label>
+            <input type="url" id="image" name="image" required>
           </div>
           <button type="submit" id="add-btn">Aggiungi</button>
         </form>
