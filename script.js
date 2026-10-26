@@ -35,4 +35,4 @@
     email: "danielaamet@team.com",
     img: "img/female3.png"
   }
-];
+]

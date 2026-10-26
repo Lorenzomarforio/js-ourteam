@@ -24,7 +24,7 @@
           <div class="card-info">
             <h3>MARCO BIANCHI</h3>
             <p class="role">Designer</p>
-            <p class="mailto:marcobianchi@team.com" >marcobianchi@team.com</p>
+            <a class="email" href="mailto:marcobianchi@team.com">marcobianchi@team.com</a>
           </div>
         </div>
 
@@ -35,7 +35,7 @@
           <div class="card-info">
             <h3>LAURA ROSSI</h3>
             <p class="role">Front-end Developer</p>
-            <p class="laurarossi@team.com" >laurarossi@team.com</p>
+            <a class="email" href="mailto:laurarossi@team.com">laurarossi@team.com</a>
           </div>
         </div>
 
@@ -46,7 +46,7 @@
           <div class="card-info">
             <h3>GIORGIO VERDI</h3>
             <p class="role">Back-end Developer</p>
-            <p class="giorgioverdi@team.com" >giorgioverdi@team.com</p>
+            <a class="email" href="mailto:giorgioverdi@team.com">giorgioverdi@team.com</a>
           </div>
         </div>
 
@@ -57,7 +57,7 @@
           <div class="card-info">
             <h3>MARTA IPSUM</h3>
             <p class="role">SEO Specialist</p>
-            <p class="martarossi@team.com" >martarossi@team.com</p>
+            <a class="email" href="mailto:martarossi@team.com">martarossi@team.com</a>
           </div>
         </div>
 
@@ -68,7 +68,7 @@
           <div class="card-info">
             <h3>ROBERTO LOREM</h3>
             <p class="role">SEO Specialist</p>
-            <p class="robertolorem@team.com" >robertolorem@team.com</p>
+            <a class="email" href="mailto:robertolorem@team.com">robertolorem@team.com</a>
           </div>
         </div>
 
@@ -79,12 +79,29 @@
           <div class="card-info">
             <h3>DANIELA AMET</h3>
             <p class="role">Analyst</p>
-            <p class="mailto:danielaamet@team.com" >danielaamet@team.com</p>
+            <a class="email" href="mailto:danielaamet@team.com">danielaamet@team.com</a>
           </div>
         </div>
 
       </div> 
-      
+      <section class="form-section">
+        <h2>Aggiungi un nuovo membro</h2>
+        <form id="team-form" class="team-form">
+          <div class="form-group">
+          <label>Nome e cognome</label>  <input type="text" id="name">
+          </div>
+          <div class="form-group">
+            <label>Ruolo</label><input type="text" id="role">
+          </div>
+          <div class="form-group">
+           <label>Indirizzo mail</label> <input type="email" id="email">
+          </div>
+          <div class="form-group">
+           <label>Url immagine</label> <input type="url" id="image">
+          </div>
+          <button type="submit" id="add-btn">Aggiungi</button>
+        </form>
+      </section>
     </main> 
 
 </body>
