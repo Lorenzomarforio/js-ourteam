@@ -1,4 +1,4 @@
-const teamMembers = [
+const inizialeTeamMembers = [
   {
     name: "Marco Bianchi",
     role: "Designer",
@@ -36,44 +36,83 @@ const teamMembers = [
     img: "https://picsum.photos/id/334/300/300"
   }
 ];
+const newTeamMembers = [];
 
-// Selezioniamo gli elementi corretti basati sul tuo HTML
-const containerEl = document.querySelector(".team-grid");
+const containerEl = document.getElementById("our-team");
 const nameEl = document.getElementById("newname");
 const roleEl = document.getElementById("newrole");
 const emailEl = document.getElementById("newemail");
 const imageEl = document.getElementById("newimage");
 const formEl = document.getElementById("team-form");
 
+let teamMembers = JSON.parse(localStorage.getItem("inizialeTeamMembers"));
+  localStorage.setItem("inizialeTeamMembers", JSON.stringify("inizialeTeamMembers"));
+
+
+
+function renderTeam() {
+
+  inizialeTeamMembers.forEach((member) => {
+    containerEl.innerHTML +=`
+      <div class="team-card">
+        <div class="card-img">
+          <img src="${member.img}" alt="${member.name}">
+        </div>
+        <div class="card-info">
+          <h3>${member.name}</h3>
+          <p class="role">${member.role}</p>
+          <a class="email" href="mailto:${member.email}">${member.email}</a>
+        </div>
+      </div>
+    `;
+  });
+}
+
+
+// renderTeam();
+
+
+
 formEl.addEventListener("submit", (event) => {
   event.preventDefault();
-
-  
+ 
   const newMember = {
     name: nameEl.value,
     role: roleEl.value,
     email: emailEl.value,
     img: imageEl.value
   };
+ 
+  inizialeTeamMembers.push(newMember);
+  localStorage.clear("inizialeTeamMembers");
+  containerEl.innerHTML = "";
+  renderTeam();
+console.log(newMember)
+ 
+  localStorage.setItem("inizialeTeamMembers", JSON.stringify(inizialeTeamMembers));
+  function renderNewTeam() {
 
+/*CARICA PAGINA OUR TEAM CON 6 CARD**/
+
+
+
+  newTeamMembers.forEach((member) => {
+    containerEl.innerHTML += `
+      <div class="team-card">
+        <div class="card-img">
+          <img src="${member.img}" alt="${member.name}">
+        </div>
+        <div class="card-info">
+          <h3>${member.name}</h3>
+          <p class="role">${member.role}</p>
+          <a class="email" href="mailto:${member.email}">${member.email}</a>
+        </div>
+      </div>
+    `;
+  });
+}
+ 
+ 
   
-  teamMembers.push(newMember);
 
-
-  containerEl.innerHTML += `
-    <div class="team-card">
-      <div class="card-img">
-        <img src="${newMember.img}" alt="${newMember.name}">
-      </div>
-      <div class="card-info">
-        <h3>${newMember.name}</h3>
-        <p class="role">${newMember.role}</p>
-        <a class="email" href="mailto:${newMember.email}">${newMember.email}</a>
-      </div>
-    </div>
-  `;
-
-  // 4. Ripuliamo i campi del form dopo l'invio
-  formEl.reset();
 });
-   
