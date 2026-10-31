@@ -36,7 +36,6 @@ const inizialeTeamMembers = [
     img: "https://picsum.photos/id/334/300/300"
   }
 ];
-const newTeamMembers = [];
 
 const containerEl = document.getElementById("our-team");
 const nameEl = document.getElementById("newname");
@@ -45,58 +44,18 @@ const emailEl = document.getElementById("newemail");
 const imageEl = document.getElementById("newimage");
 const formEl = document.getElementById("team-form");
 
+
 let teamMembers = JSON.parse(localStorage.getItem("inizialeTeamMembers"));
-  localStorage.setItem("inizialeTeamMembers", JSON.stringify("inizialeTeamMembers"));
-
-
-
-function renderTeam() {
-
-  inizialeTeamMembers.forEach((member) => {
-    containerEl.innerHTML +=`
-      <div class="team-card">
-        <div class="card-img">
-          <img src="${member.img}" alt="${member.name}">
-        </div>
-        <div class="card-info">
-          <h3>${member.name}</h3>
-          <p class="role">${member.role}</p>
-          <a class="email" href="mailto:${member.email}">${member.email}</a>
-        </div>
-      </div>
-    `;
-  });
+if (!teamMembers || teamMembers.length === 0) {
+  teamMembers = inizialeTeamMembers;
+  localStorage.setItem("inizialeTeamMembers", JSON.stringify(teamMembers));
 }
 
 
-// renderTeam();
+function renderTeam() {
+  containerEl.innerHTML = ""; 
 
-
-
-formEl.addEventListener("submit", (event) => {
-  event.preventDefault();
- 
-  const newMember = {
-    name: nameEl.value,
-    role: roleEl.value,
-    email: emailEl.value,
-    img: imageEl.value
-  };
- 
-  inizialeTeamMembers.push(newMember);
-  localStorage.clear("inizialeTeamMembers");
-  containerEl.innerHTML = "";
-  renderTeam();
-console.log(newMember)
- 
-  localStorage.setItem("inizialeTeamMembers", JSON.stringify(inizialeTeamMembers));
-  function renderNewTeam() {
-
-/*CARICA PAGINA OUR TEAM CON 6 CARD**/
-
-
-
-  newTeamMembers.forEach((member) => {
+  teamMembers.forEach((member) => {
     containerEl.innerHTML += `
       <div class="team-card">
         <div class="card-img">
@@ -111,8 +70,27 @@ console.log(newMember)
     `;
   });
 }
- 
- 
-  
 
+
+renderTeam();
+
+
+formEl.addEventListener("submit", (event) => {
+  event.preventDefault();
+ 
+  const newMember = {
+    name: nameEl.value,
+    role: roleEl.value,
+    email: emailEl.value,
+    img: imageEl.value
+  };
+ 
+  teamMembers.push(newMember);
+ 
+  localStorage.setItem("inizialeTeamMembers", JSON.stringify(teamMembers));
+  
+  
+  renderTeam();
+ 
+  formEl.reset();
 });
